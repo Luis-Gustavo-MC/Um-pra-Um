@@ -1,48 +1,31 @@
 package com.LSG.Um_pra_Um.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "tb_department")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+
 public class Department {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter
     private Long id;
+    @Setter
     private String name;
 
     @OneToMany(mappedBy = "department")
     private List<Person> people = new ArrayList<>();
 
-    public Department() {
-    }
-
-    public Department(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Person> getPeople() {
-        return people;
-    }
 }
 

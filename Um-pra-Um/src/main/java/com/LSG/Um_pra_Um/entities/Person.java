@@ -1,60 +1,27 @@
 package com.LSG.Um_pra_Um.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "tb_person")
+@AllArgsConstructor @NoArgsConstructor @Getter
 public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter
     private Long id;
+    @Setter
     private String name;
+    @Setter
     private Double salary;
 
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
 
-    public Person() {
-    }
-
-    public Person(Long id, String name, Double salary, Department department) {
-        this.id = id;
-        this.name = name;
-        this.salary = salary;
-        this.department = department;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(Double salary) {
-        this.salary = salary;
-    }
-
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
 }
