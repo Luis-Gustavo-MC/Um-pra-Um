@@ -1,6 +1,7 @@
 package com.LSG.Um_pra_Um.services;
 
 import com.LSG.Um_pra_Um.dto.PersonDepartamentDTO;
+import com.LSG.Um_pra_Um.entities.Department;
 import com.LSG.Um_pra_Um.entities.Person;
 import com.LSG.Um_pra_Um.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,17 @@ public class PersonServices {
 
     public PersonDepartamentDTO insert(PersonDepartamentDTO dto){
         Person entity = new Person();
-        return null;
+
+        entity.setName(dto.getName());
+        entity.setSalary(dto.getSalary());
+
+        Department departament = new Department();
+        departament.setId(dto.getDepartment().getId());
+
+        entity.setDepartment(departament);
+
+        entity = repository.save(entity);
+
+        return new PersonDepartamentDTO(entity);
     }
-
-
 }

@@ -19,7 +19,7 @@ public class PersonController {
     private PersonServices services;
     @PostMapping
     public ResponseEntity<PersonDepartamentDTO> insert(@RequestBody PersonDepartamentDTO dto){
-        dto = services.insert(dto);
+         dto = services.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
     }
